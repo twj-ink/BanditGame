@@ -466,8 +466,112 @@ d5.bin: ASCII text
 bandit12@bandit:/tmp/myans/extracted_files/new_files/newnew_files$ cat d5.bin
 The password is FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
 ```
-
 -> level 14:
+```bash
+bandit13@bandit:~$ ls
+sshkey.private
+bandit13@bandit:~$ file sshkey.private
+sshkey.private: PEM RSA private key
+bandit13@bandit:~$ cat sshkey.private
+-----BEGIN RSA PRIVATE KEY-----
+***** #此处隐藏sshkey的内容，否则无法push到github，lol
+-----END RSA PRIVATE KEY-----
+bandit13@bandit:~$ ls -l
+total 4
+-rw-r----- 1 bandit14 bandit13 1679 Sep 19 07:08 sshkey.private
+bandit13@bandit:~$ ssh -i sshkey.private bandit14@localhost
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+ED25519 key fingerprint is SHA256:C2ihUBV7ihnV1wUXRb4RrEcLfXC5CXlhmAAM/urerLY.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Could not create directory '/home/bandit13/.ssh' (Permission denied).
+Failed to add the host to the list of known hosts (/home/bandit13/.ssh/known_hosts).
+
+                      This is an OverTheWire game server.
+            More information on http://www.overthewire.org/wargames
+
+!!! You are trying to log into this SSH server on port 22, which is not intended.
+
+bandit14@localhost: Permission denied (publickey).
+bandit13@bandit:~$ ssh -i sshkey.private bandit14@localhost -p 2220
+The authenticity of host '[localhost]:2220 ([127.0.0.1]:2220)' can't be established.
+ED25519 key fingerprint is SHA256:C2ihUBV7ihnV1wUXRb4RrEcLfXC5CXlhmAAM/urerLY.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Could not create directory '/home/bandit13/.ssh' (Permission denied).
+Failed to add the host to the list of known hosts (/home/bandit13/.ssh/known_hosts).
+                         _                     _ _ _
+                        | |__   __ _ _ __   __| (_) |_
+                        | '_ \ / _` | '_ \ / _` | | __|
+                        | |_) | (_| | | | | (_| | | |_
+                        |_.__/ \__,_|_| |_|\__,_|_|\__|
+
+
+                      This is an OverTheWire game server.
+            More information on http://www.overthewire.org/wargames
+
+!!! You are trying to log into this SSH server with a password on port 2220 from localhost.
+!!! Connecting from localhost is blocked to conserve resources.
+!!! Please log out and log in again.
+```
+
+-> level 15:
+```bash
+bandit14@bandit:/etc$ cd bandit_pass/
+bandit14@bandit:/etc/bandit_pass$ ls
+bandit0   bandit11  bandit14  bandit17  bandit2   bandit22  bandit25  bandit28  bandit30  bandit33  bandit6  bandit9
+bandit1   bandit12  bandit15  bandit18  bandit20  bandit23  bandit26  bandit29  bandit31  bandit4   bandit7
+bandit10  bandit13  bandit16  bandit19  bandit21  bandit24  bandit27  bandit3   bandit32  bandit5   bandit8
+bandit14@bandit:/etc/bandit_pass$ cat bandit13
+cat: bandit13: Permission denied
+bandit14@bandit:/etc/bandit_pass$
+bandit14@bandit:/etc/bandit_pass$ cat bandit14
+MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+bandit14@bandit:/etc/bandit_pass$
+bandit14@bandit:/etc/bandit_pass$ ls -l
+total 136
+-r-------- 1 bandit0  bandit0   8 Sep 19 07:07 bandit0
+-r-------- 1 bandit1  bandit1  33 Sep 19 07:07 bandit1
+-r-------- 1 bandit10 bandit10 33 Sep 19 07:07 bandit10
+-r-------- 1 bandit11 bandit11 33 Sep 19 07:07 bandit11
+-r-------- 1 bandit12 bandit12 33 Sep 19 07:07 bandit12
+-r-------- 1 bandit13 bandit13 33 Sep 19 07:07 bandit13
+-r-------- 1 bandit14 bandit14 33 Sep 19 07:07 bandit14
+-r-------- 1 bandit15 bandit15 33 Sep 19 07:07 bandit15
+-r-------- 1 bandit16 bandit16 33 Sep 19 07:07 bandit16
+-r-------- 1 bandit17 bandit17 33 Sep 19 07:07 bandit17
+-r-------- 1 bandit18 bandit18 33 Sep 19 07:07 bandit18
+-r-------- 1 bandit19 bandit19 33 Sep 19 07:07 bandit19
+-r-------- 1 bandit2  bandit2  33 Sep 19 07:07 bandit2
+-r-------- 1 bandit20 bandit20 33 Sep 19 07:07 bandit20
+-r-------- 1 bandit21 bandit21 33 Sep 19 07:07 bandit21
+-r-------- 1 bandit22 bandit22 33 Sep 19 07:07 bandit22
+-r-------- 1 bandit23 bandit23 33 Sep 19 07:07 bandit23
+-r-------- 1 bandit24 bandit24 33 Sep 19 07:07 bandit24
+-r-------- 1 bandit25 bandit25 33 Sep 19 07:07 bandit25
+-r-------- 1 bandit26 bandit26 33 Sep 19 07:08 bandit26
+-r-------- 1 bandit27 bandit27 33 Sep 19 07:08 bandit27
+-r-------- 1 bandit28 bandit28 33 Sep 19 07:08 bandit28
+-r-------- 1 bandit29 bandit29 33 Sep 19 07:08 bandit29
+-r-------- 1 bandit3  bandit3  33 Sep 19 07:08 bandit3
+-r-------- 1 bandit30 bandit30 33 Sep 19 07:08 bandit30
+-r-------- 1 bandit31 bandit31 33 Sep 19 07:08 bandit31
+-r-------- 1 bandit32 bandit32 33 Sep 19 07:08 bandit32
+-r-------- 1 bandit33 bandit33 33 Sep 19 07:08 bandit33
+-r-------- 1 bandit4  bandit4  33 Sep 19 07:08 bandit4
+-r-------- 1 bandit5  bandit5  33 Sep 19 07:08 bandit5
+-r-------- 1 bandit6  bandit6  33 Sep 19 07:08 bandit6
+-r-------- 1 bandit7  bandit7  33 Sep 19 07:08 bandit7
+-r-------- 1 bandit8  bandit8  33 Sep 19 07:08 bandit8
+-r-------- 1 bandit9  bandit9  33 Sep 19 07:08 bandit9
+bandit14@bandit:/etc/bandit_pass$ cat bandit14
+MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+bandit14@bandit:/etc/bandit_pass$ echo 'MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS' | nc localhost 30000
+Correct!
+8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
+```
+
+-> level 16:
 ```bash
 
 ```
