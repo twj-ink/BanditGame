@@ -1,7 +1,7 @@
 level 0:
-
+```bash
 ssh bandit0@bandit.labs.overthewire.org -p 2220
-
+```
 -> level 1:
 
 ```bash
@@ -26,7 +26,7 @@ bandit1@bandit:~$ cat ./-
 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
 ```
 
-->level 3:
+-> level 3:
 
 ```bash
 bandit2@bandit:~$ ls
@@ -467,3 +467,7 @@ bandit12@bandit:/tmp/myans/extracted_files/new_files/newnew_files$ cat d5.bin
 The password is FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
 ```
 
+-> level 14:
+```bash
+
+```
