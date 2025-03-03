@@ -1022,6 +1022,105 @@ bandit22@bandit:/etc/cron.d$ cat  /tmp/8ca319486bfbbc3663ea0fbe81326349
 ```
 
 -> level 24:
-```bash
+被卡的最久的一集，我在`/tmp`中提前新建了文件夹`/tolevel24`，然后在里面`touch pw24`来存放即将得到的密码。
+这里应该是需要`chmod 777 /tmp/tolevel24/pw24`的，否则后续可能密码读入不了。
 
+接着在脚本内容的提醒下去`/var/spool/bandit24/foo`写一个`s.sh`脚本，用`vim`写方便一点。
+内容就是把本关答案输入到`/tmp/tolevel24/pw24`中，要加上`chmod +x s.sh`的可执行权限。
+
+然后就是不断刷新，因为每一分钟`foo`下的文件会执行和删除，所以当`s.sh`消失的时候就是答案显现的时候。
+```bash
+bandit23@bandit:/etc/cron.d$ ls
+cronjob_bandit22  cronjob_bandit23  cronjob_bandit24  e2scrub_all  otw-tmp-dir  sysstat
+bandit23@bandit:/etc/cron.d$ cat cronjob_bandit24
+@reboot bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+* * * * * bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+bandit23@bandit:/etc/cron.d$ cat cronjob_bandit24
+@reboot bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+* * * * * bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+bandit23@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit24.sh
+#!/bin/bash
+
+myname=$(whoami)
+
+cd /var/spool/$myname/foo
+echo "Executing and deleting all scripts in /var/spool/$myname/foo:"
+for i in * .*;
+do
+    if [ "$i" != "." -a "$i" != ".." ];
+    then
+        echo "Handling $i"
+        owner="$(stat --format "%U" ./$i)"
+        if [ "${owner}" = "bandit23" ]; then
+            timeout -s 9 60 ./$i
+        fi
+        rm -f ./$i
+    fi
+done
+
+bandit23@bandit:/etc/cron.d$ cd /tmp//tolevel24
+bandit23@bandit:/tmp/tolevel24$ cat pw24
+bandit23@bandit:/tmp/tolevel24$ cd /var/spool/bandit24
+bandit23@bandit:/var/spool/bandit24$ ls
+foo
+bandit23@bandit:/var/spool/bandit24$ cd foo
+bandit23@bandit:/var/spool/bandit24/foo$ ls
+ls: cannot open directory '.': Permission denied
+bandit23@bandit:/var/spool/bandit24/foo$ vim s.sh
+"s.sh" [New] 3L, 94B writtenandit24/foo$
+bandit23@bandit:/var/spool/bandit24/foo$ chmod +x /var/spool/bandit24/foo/s.sh
+bandit23@bandit:/var/spool/bandit24/foo$ cat s.sh
+#!/bin/bash
+cat /etc/bandit_pass/bandit24 > /tmp/tolevel24/pw24
+chmod 777 /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat s.sh
+#!/bin/bash
+cat /etc/bandit_pass/bandit24 > /tmp/tolevel24/pw24
+chmod 777 /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat s.sh
+#!/bin/bash
+cat /etc/bandit_pass/bandit24 > /tmp/tolevel24/pw24
+chmod 777 /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat s.sh
+#!/bin/bash
+cat /etc/bandit_pass/bandit24 > /tmp/tolevel24/pw24
+chmod 777 /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat s.sh
+#!/bin/bash
+cat /etc/bandit_pass/bandit24 > /tmp/tolevel24/pw24
+chmod 777 /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat s.sh
+#!/bin/bash
+cat /etc/bandit_pass/bandit24 > /tmp/tolevel24/pw24
+chmod 777 /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat s.sh
+#!/bin/bash
+cat /etc/bandit_pass/bandit24 > /tmp/tolevel24/pw24
+chmod 777 /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat s.sh
+#!/bin/bash
+cat /etc/bandit_pass/bandit24 > /tmp/tolevel24/pw24
+chmod 777 /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat s.sh
+#!/bin/bash
+cat /etc/bandit_pass/bandit24 > /tmp/tolevel24/pw24
+chmod 777 /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ chmod 777 /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat /tmp/tolevel24/pw24
+bandit23@bandit:/var/spool/bandit24/foo$ cat s.sh
+cat: s.sh: No such file or directory
+bandit23@bandit:/var/spool/bandit24/foo$ cat /tmp/tolevel24/pw24
+gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8
 ```
