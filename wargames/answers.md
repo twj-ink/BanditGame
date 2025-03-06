@@ -1124,3 +1124,8 @@ cat: s.sh: No such file or directory
 bandit23@bandit:/var/spool/bandit24/foo$ cat /tmp/tolevel24/pw24
 gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8
 ```
+
+-> level 25:
+```bash
+
+```
